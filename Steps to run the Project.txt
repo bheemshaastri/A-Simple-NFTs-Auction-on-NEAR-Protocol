@@ -1,0 +1,49 @@
+0) rustup target add wasm32-unknown-unknown 
+
+1) ./build.sh
+
+2) near deploy --wasmFile res/contract.wasm --accountId $ID
+
+3) /dev-deploy.sh
+
+4) export ID=youraccountid
+
+5) near call $ID new '{"_owner_id":"'$ID'"}' --accountId $ID
+
+6) near call $ID mint_nft '{"_owner_id":"nftauctionorganizer.testnet","_token_data":{"title":"NFT_1","description":"This is my first NFT"}}' --accountId nftauctionorganizer.testnet --deposit 1
+
+7) near call $ID mint_nft '{"_owner_id":"nftauctionorganizer.testnet","_token_data":{"title":"NFT_2","description":"This is my second NFT"}}' --accountId nftauctionorganizer.testnet --deposit 1
+
+8) near call $ID mint_nft '{"_owner_id":"nftauctionorganizer.testnet","_token_data":{"title":"NFT_3","description":"This is my third NFT"}}' --accountId nftauctionorganizer.testnet --deposit 1
+
+9) near call $ID get_token_by_owner '{"_owner_id":"nftauctionorganizer.testnet"}' --accountId nftauctionorganizer.testnet
+
+10) near create-account auctionparticipant1.nftauctionorganizer.testnet --masterAccount nftauctionorganizer.testnet --initialBalance 10
+
+11) near create-account auctionparticipant2.nftauctionorganizer.testnet --masterAccount nftauctionorganizer.testnet --initialBalance 10
+
+12) near create-account auctionparticipant3.nftauctionorganizer.testnet --masterAccount nftauctionorganizer.testnet --initialBalance 10
+
+13) near create-account auctionparticipant4.nftauctionorganizer.testnet --masterAccount nftauctionorganizer.testnet --initialBalance 10
+
+14) near create-account auctionparticipant5.nftauctionorganizer.testnet --masterAccount nftauctionorganizer.testnet --initialBalance 10
+
+15) near call $ID transfer_nft '{"_new_owner_id":"auctionparticipant1.nftauctionorganizer.testnet","_token_id":2}' --accountId nftauctionorganizer.testnet
+
+16) near call $ID get_token_id '{"_token_id":2}' --accountId nftauctionorganizer.testnet
+
+17) near call $ID create_auction '{"_token_id":3,"_auction_during_seconds":60}' --accountId nftauctionorganizer.testnet --deposit 5
+
+18) near call $ID start_auction '{"_auction_id":1}' --accountId nftauctionorganizer.testnet
+
+19) near call $ID commit_auction '{"_auction_id":1}' --accountId auctionparticipant1.nftauctionorganizer.testnet --deposit 4
+
+20) near call $ID commit_auction '{"_auction_id":1}' --accountId auctionparticipant2.nftauctionorganizer.testnet --deposit 3
+
+21) near call $ID commit_auction '{"_auction_id":1}' --accountId auctionparticipant3.nftauctionorganizer.testnet --deposit 6
+
+22) near call $ID commit_auction '{"_auction_id":1}' --accountId auctionparticipant4.nftauctionorganizer.testnet --deposit 5
+
+23) near call $ID check-auctions --accountId $ID
+
+24) near call $ID get_token_by_id '{"_token_id":3}' --accountId $ID
