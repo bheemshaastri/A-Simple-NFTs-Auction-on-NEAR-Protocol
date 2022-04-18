@@ -25,7 +25,13 @@ use the command for installing near-cli is:
      
      npm install -g near-cli
      
-use the command for logging into near-cli
+Once you've created your near wallet go ahead and login to your wallet with your cli and follow the on-screen prompts use the command for logging into near-cli
 
     near login
+    
+Once your logged in you have to deploy the contract. Make a subaccount with the name of your choosing
+
+    near create-account nft-example.your-account.testnet --masterAccount your-account.testnet --initialBalance 10
+    
+# Setting up the Environment Variables 
     
