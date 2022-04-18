@@ -34,4 +34,18 @@ Once your logged in you have to deploy the contract. Make a subaccount with the 
     near create-account nft-example.your-account.testnet --masterAccount your-account.testnet --initialBalance 10
     
 # Setting up the Environment Variables 
+
+After deploying the Contract, set the environment variable to your accountId
+
+    export ID=youraccount
+    
+# Deploying the Contract
+
+    near deploy --wasmFile res/contract.wasm --accountId $ID
+    
+# Intializing the Contract
+
+    near call $ID new '{"_owner_id":"'$ID'"}' --accountId $ID
+    
+
     
